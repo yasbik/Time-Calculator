@@ -51,13 +51,10 @@ def add_time(start, duration, sday = ""):
     
     final_day = days[(curr_index + day_counter) - len(days)]
 
-    print(curr_hours_24, curr_mins)
-    print(final_day)
+    if (sday != ""):
+        new_time = str(curr_hours_24) + ":" + str(curr_mins) + " " + final_day + " (" + str(day_counter) + " days later)"
+    else:
+        new_time = str(curr_hours_24) + ":" + str(curr_mins) + " (" + str(day_counter) + " days later)"
     
 
-
-    
-
-
-
-    #return new_time
+    return new_time
