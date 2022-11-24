@@ -8,6 +8,7 @@ def add_time(start, duration, sday = ""):
     curr_hours = int(start_time.split(":")[0])
     curr_mins = int(start_time.split(":")[1])
 
+
     # convert the current time to 24 hour format
     curr_hours_24 = curr_hours
     if is_pm:
@@ -21,9 +22,12 @@ def add_time(start, duration, sday = ""):
     curr_hours_24 += hours_to_add
     curr_mins += mins_to_add
 
+    print("1: ", curr_mins)
+
+
     if curr_mins > 59:
         curr_hours_24 += 1
-        curr_mins -= 59
+        curr_mins -= 60
 
     # day counter
 
@@ -59,7 +63,14 @@ def add_time(start, duration, sday = ""):
             curr_index = i
             break
     
-    final_day = days[(curr_index + day_counter) - len(days)]
+    days_passed = (curr_index + day_counter) - len(days)
+
+    while days_passed > 6:
+        days_passed -= 7
+    while days_passed < -7:
+        days_passed += 7
+
+    final_day = days[days_passed]
     days_later = ""
 
     if day_counter == 0:
