@@ -21,7 +21,7 @@ def add_time(start, duration, sday = ""):
     curr_hours_24 += hours_to_add
     curr_mins += mins_to_add
 
-    if (curr_mins - 59) > 0:
+    if curr_mins > 59:
         curr_hours_24 += 1
         curr_mins -= 59
 
@@ -33,6 +33,10 @@ def add_time(start, duration, sday = ""):
         day_counter += 1
         curr_hours_24 -= 24
     
+    time_dict = {0: 12, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 1, 14: 2, 15: 3, 16: 4, 17: 5, 18: 6, 19: 7, 20: 8, 21: 9, 22: 10, 23: 11}
+
+    curr_hours_12 = time_dict[curr_hours_24]
+
 
 
 
@@ -52,9 +56,9 @@ def add_time(start, duration, sday = ""):
     final_day = days[(curr_index + day_counter) - len(days)]
 
     if (sday != ""):
-        new_time = str(curr_hours_24) + ":" + str(curr_mins) + " " + final_day + " (" + str(day_counter) + " days later)"
+        new_time = str(curr_hours_12) + ":" + str(curr_mins).zfill(2) + " " + final_day + " (" + str(day_counter) + " days later)"
     else:
-        new_time = str(curr_hours_24) + ":" + str(curr_mins) + " (" + str(day_counter) + " days later)"
+        new_time = str(curr_hours_12) + ":" + str(curr_mins).zfill(2) + " (" + str(day_counter) + " days later)"
     
 
     return new_time
