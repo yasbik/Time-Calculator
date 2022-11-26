@@ -56,7 +56,7 @@ def add_time(start, duration, sday = ""):
             break
     
     # calculate how many days passed
-    days_passed = (curr_index + day_counter) - len(days)
+    days_passed = (index + day_counter) - len(days)
 
     # ensure array does not go out of bounds
     while days_passed > 6:
